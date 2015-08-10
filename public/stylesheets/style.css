@@ -1,0 +1,27 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+*:focus {
+  outline: none;
+}
+
+.content {
+  width: 700px;
+  margin: 0 auto;
+}
+
+p {
+  font-size: 22px;
+  line-height: 1.5;
+  margin-bottom: 30px;
+  font-family: "freight-text-pro",Georgia,Cambria,"Times New Roman",Times,serif;
+  letter-spacing: .01rem;
+  font-weight: 400;
+  font-style: normal;
+}

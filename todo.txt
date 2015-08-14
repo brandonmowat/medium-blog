@@ -1,0 +1,34 @@
+DB configuration:
+{
+  _id : "..." <- this is automatically set,
+  date : "the blog post's date of posting" <- shouldn't be in plain text... but fuck it i can do it later,
+  tags : ["a", "list", "of", "tags"],
+  blogTitle : "the-blogs-porper-URL-title",
+  content : {
+    title : "The blog's title",
+    content : "<p>This is going to be the post's html content</p>"
+  }
+}
+
+===================================
+
+Plan of attack
+--------------
+
+Homepage: will display links to all the blog posts in reverse chronological order
+(most recent posts first)
+
+/new-post :
+- this is the page where the content creation will occur. This page may only be
+accessible if I am logged in.
+
+1. Once logged in, I may go to this page and start writing.
+  1*. There will be an h1 at the top and this is the content's "title"
+  1**. inside ".content" is where the html blog post content will go.
+
+2. When finished writing, you can submit by clicking a "submit button"
+
+3. Upon submission, index.js must grab all required information and inputs it
+  all in the database
+
+4. Redirect to the homepage

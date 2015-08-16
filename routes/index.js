@@ -37,7 +37,12 @@ router.get("/new-post", function (req, res) {
 });
 
 // Here's wher we will submit new-post info to the database
-router.post('/store', function(req, res) {
+router.post('/new-post', function(req, res) {
+
+  var contentTitle = req.body.title;
+  var contentBody = req.body.body;
+
+  res.render('post', { postTitle: 'Post Title. Post number: ' + postID, postDate:"content: " + contentBody });
 
   var db = req.db;
 
@@ -47,8 +52,7 @@ router.post('/store', function(req, res) {
   var contentBody = req.body.body;
 
   collection.insert({
-      "date" : userName,
-      "email" : userEmail,
+      "date" : getDate(),
       "blogTitle" : "the-blogs-porper-URL-title",
       "content" : {
         "title" : contentTitle,
@@ -64,7 +68,7 @@ router.post('/store', function(req, res) {
           // If it worked, set the header so the address bar doesn't still say /adduser
           //res.location("userlist");
           // And forward to success page
-          res.redirect("userlist");
+          res.redirect("/");
       }
   });
 });

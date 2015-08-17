@@ -10,10 +10,16 @@ var mongo = require('mongodb');
 var monk = require('monk');
 var db = monk('localhost:27017/blog');
 
+
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
+
+app.use(function(req,res,next){
+    req.db = db;
+    next();
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

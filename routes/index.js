@@ -42,7 +42,11 @@ router.post('/new-post', function(req, res) {
   var contentTitle = req.body.title;
   var contentBody = req.body.body;
 
-  res.render('post', { postTitle: 'Post Title. Post number: ' + postID, postDate:"content: " + contentBody });
+  var postTitle = "";
+  var fluffyTitle = contentTitle.split(" ");
+  for (var i = 0; i < fluffyTitle.length; i++) {
+    postTitle += fluffyTitle[i];
+  }
 
   var db = req.db;
 
@@ -53,7 +57,7 @@ router.post('/new-post', function(req, res) {
 
   collection.insert({
       "date" : getDate(),
-      "blogTitle" : "the-blogs-porper-URL-title",
+      "blogTitle" : postTitle,
       "content" : {
         "title" : contentTitle,
         "content" : contentBody

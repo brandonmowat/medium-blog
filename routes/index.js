@@ -27,9 +27,20 @@ router.get('/post/:id', function (req, res, next) {
 });
 
 router.get('/post/:id', function (req, res) {
-  console.log('and this matches too');
-  res.render('post', { postTitle: 'Post Title. Post number: ' + postID, postDate:"Post date." + getDate() });
+  var db = req.db;
 
+  var collection = db.get('blogPosts');
+
+  // try to find the post with ID "postID".
+  // Will use the blogTitle ad ID
+  collection.findOne({ blogTitle: postID }).on('success', function (doc) {
+    res.render('post', { title: doc.content.title, body: doc.content.content });
+  });
+
+});
+
+router.get('/post', function (req, res) {
+  res.redirect("/");
 });
 
 router.get("/new-post", function (req, res) {
@@ -43,9 +54,10 @@ router.post('/new-post', function(req, res) {
   var contentBody = req.body.body;
 
   var postTitle = "";
-  var fluffyTitle = contentTitle.split(" ");
-  for (var i = 0; i < fluffyTitle.length; i++) {
+  var fluffyTitle = ((contentTitle.split(">"))[1]).split(" ");
+  for (var i = 0; i < ((fluffyTitle.length)-1); i++) {
     postTitle += fluffyTitle[i];
+    postTitle += "-";
   }
 
   var db = req.db;

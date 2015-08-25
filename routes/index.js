@@ -33,7 +33,7 @@ router.get('/post/:id', function (req, res) {
 
   // try to find the post with ID "postID".
   // Will use the blogTitle ad ID
-  collection.findOne({ blogTitle: postID }).on('success', function (doc) {
+  collection.findOne({ _id: postID }).on('success', function (doc) {
     res.render('post', { title: doc.content.title, body: doc.content.content });
   });
 
@@ -56,7 +56,7 @@ router.post('/new-post', function(req, res) {
   var postTitle = "";
   var fluffyTitle = ((contentTitle.split(">"))[1]).split(" ");
   for (var i = 0; i < ((fluffyTitle.length)-1); i++) {
-    postTitle += fluffyTitle[i];
+    postTitle += (fluffyTitle[i]).toLowerCase();
     postTitle += "-";
   }
 
@@ -98,8 +98,27 @@ var results = collection.find({title:id}, function (err, docs){
   req.post = docs;
 });
 */
+
+// here's the hompage
 router.get("/", function(req, res) {
-  res.render('index', { title: 'Blog Title' });
+  // Want to get all the blog posts, sort them, create some html and then
+  // push it to our template
+  var db = req.db;
+
+  var collection = db.get('blogPosts');
+
+  // find all the posts
+  collection.find({}, function (err, docs){
+    posts = "";
+    for (var i = 0; i < docs.length; i++) {
+      posts += "<div class='article'>";
+      posts += "<a href='/post/" + docs[i]._id + "'>";
+      posts += ("<h2>" + docs[i].content.title + "</h2>");
+      posts += "</a>"
+      posts += "</div>";
+    }
+    res.render('index', { title: 'Brandon\'s Blog', body : posts });
+  });
 });
 
 module.exports = router;

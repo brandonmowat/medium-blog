@@ -1,6 +1,13 @@
+html, body {
+  margin: 0;
+}
+
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  background-color: #FFF;
 }
 
 a {
@@ -11,10 +18,34 @@ a {
   outline: none;
 }
 
-.content {
-  width: 700px;
+.container {
+  max-width: 700px;
   margin: 0 auto;
 }
+.container img {
+  width: 50%;
+  float: left;
+}
+.container .pull-left {
+  width: 55%;
+  float: left;
+  margin: 20px 20px 20px -80px;
+}
+.container .pull-right {
+  width: 55%;
+  float: right;
+  margin: 20px -80px 20px 20px;
+}
+@media (min-width: 750px) {
+  body {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  .container {
+    margin: 0px auto;
+  }
+}
+
 
 p {
   font-size: 22px;

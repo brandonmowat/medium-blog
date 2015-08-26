@@ -26,13 +26,14 @@ router.get('/post/:id', function (req, res, next) {
   next();
 });
 
+// Get the post wit id "id"
 router.get('/post/:id', function (req, res) {
   var db = req.db;
 
   var collection = db.get('blogPosts');
 
   // try to find the post with ID "postID".
-  // Will use the blogTitle ad ID
+  // Find's by the default id given by mongo
   collection.findOne({ _id: postID }).on('success', function (doc) {
     res.render('post', { title: doc.content.title, body: doc.content.content });
   });

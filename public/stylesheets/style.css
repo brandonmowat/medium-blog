@@ -3,7 +3,6 @@ html, body {
 }
 
 body {
-  padding: 50px;
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   font-size: 14px;
   line-height: 1.6;
@@ -12,6 +11,7 @@ body {
 
 a {
   color: #00B7FF;
+  text-decoration: none;
 }
 
 *:focus {
@@ -60,34 +60,80 @@ p {
 button {
   color: #468c54;
   display: inline-block;
-position: relative;
-height: 37px;
-padding: 0 16px;
-background: rgba(0,0,0,0);
-font-size: 14px;
-text-align: center;
-text-decoration: none;
-cursor: pointer;
-border: 1px solid rgba(0,0,0,0.15);
-border-color: #57ad68;
-vertical-align: bottom;
-white-space: nowrap;
-text-rendering: auto;
--webkit-user-select: none;
--moz-user-select: none;
--ms-user-select: none;
-user-select: none;
-box-sizing: border-box;
-border-radius: 999em;
--webkit-tap-highlight-color: rgba(0,0,0,0);
-font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
-letter-spacing: -0.02em;
-font-weight: 400;
-font-style: normal;
-text-rendering: optimizeLegibility;
+  position: relative;
+  height: 37px;
+  padding: 0 16px;
+  background: rgba(0,0,0,0);
+  font-size: 14px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid rgba(0,0,0,0.15);
+  border-color: #57ad68;
+  vertical-align: bottom;
+  white-space: nowrap;
+  text-rendering: auto;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  box-sizing: border-box;
+  border-radius: 999em;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+  letter-spacing: -0.02em;
+  font-weight: 400;
+  font-style: normal;
+  text-rendering: optimizeLegibility;
+}
+
+/* Aritcle styles */
+
+h2 {
+  letter-spacing: -0.02em;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 36px;
+  margin-left: -1.8px;
+  line-height: 1.2;
+  margin-top: 40px;
+  margin-bottom: 4px;
+  color: rgba(0,0,0,0.8);
 }
 
 
+/* Homepage styles */
+
+.hero {
+  padding: 100px 0;
+  background: url(https://static.pexels.com/photos/7614/pexels-photo.jpg) no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.article {
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+section.posts-list {
+
+}
+section.posts-list article h2 > * {
+  margin: 0;
+  font-family: Helvetica;
+  color: rgba(0,0,0,0.8);
+}
+
+/* New post styles */
+
+.content {
+  padding: 100px 0;
+}
+
+button.medium-editor-action {
+  border-radius: 0;
+}
 
 /*Medium editor styles*/
 

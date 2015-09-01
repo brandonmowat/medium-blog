@@ -1,7 +1,22 @@
+<nav>
+  <div class="right">
+    <button id="toggleVisibility" class="notVisible">New Story</button>
+  </div>
+</nav>
+<div class="popover">
+  <div class="login-form">
 
+      <form name="store" method="post" action="/">
+        <input type="text" name="username" id="username">
+        <input type="password" name="password" id="password">
+        <button onclick="" id="submitPost" type="submit">Submit</button>
+      </form>
+  </div>
+</div>
 <section class="hero">
   <div class="container">
     <h1>{{title}}</h1>
+
   </div>
 </section>
 
@@ -10,3 +25,7 @@
     {{{body}}}
   </div>
 </section>
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="/javascripts/getContent.js"></script>

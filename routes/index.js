@@ -1,7 +1,10 @@
 var express = require('express');
 var router = express.Router();
 
+var md5 = require('hash-anything').md5;
+
 var postID;
+var auth = false;
 
 function getDate() {
     var d = new Date();
@@ -12,6 +15,43 @@ function getDate() {
 // Get the content of the element with ID, "id"
 function getContent(id) {
   return document.getElementById(id).innerHTML;
+}
+
+// if is authenticated, continue
+function isAuthenticated(req, res, next, username, password) {
+
+  var auth = false;
+
+  // do any checks you want to in here
+
+  // CHECK THE USER STORED IN SESSION FOR A CUSTOM VARIABLE
+  // you can do this however you want with whatever variables you set up
+
+  if (!(auth))
+    return next();
+  // IF A USER ISN'T LOGGED IN, THEN REDIRECT THEM SOMEWHERE
+  res.redirect('/');
+}
+
+function auth(req, username, password) {
+  var name = username;
+  var pass = md5(password);
+
+  var db = req.db;
+
+  var collection = db.get('users');
+
+  collection.findOne({ username: name }).on('success', function (doc) {
+    console.log(pass);
+    console.log(doc.password);
+    if (pass === doc.password) {
+      console.log(doc);
+      return true
+    }
+    else {
+      return false
+    }
+  });
 }
 
 /* GET post page. */
@@ -44,12 +84,34 @@ router.get('/post', function (req, res) {
   res.redirect("/");
 });
 
-router.get("/new-post", function (req, res) {
+router.get("/new-post", function (req, res, next) {
+  console.log("Require auth here.");
+
+  var pass = md5("Floppy11");
+
+  var db = req.db;
+
+  var collection = db.get('users');
+
+  collection.findOne({ username: "Brandon" }).on('success', function (doc) {
+    console.log(pass);
+    console.log(doc.password);
+    if (pass === doc.password) {
+      next();
+    }else {
+      res.redirect("/");
+    }
+  });
+});
+
+router.get("/new-post", isAuthenticated(), function (req, res) {
   res.render("new-post");
 });
 
 // Here's wher we will submit new-post info to the database
 router.post('/new-post', function(req, res) {
+
+
 
   var contentTitle = req.body.title;
   var contentBody = req.body.body;
@@ -115,10 +177,41 @@ router.get("/", function(req, res) {
       posts += "<div class='article'>";
       posts += "<a href='/post/" + docs[i]._id + "'>";
       posts += ("<h2>" + docs[i].content.title + "</h2>");
+      posts += ("<h6>" + docs[i].date + "</h6>");
       posts += "</a>"
       posts += "</div>";
     }
     res.render('index', { title: 'Brandon\'s Blog', body : posts });
+  });
+});
+
+
+router.post("/", function(req, res) {
+  var db = req.db;
+
+  var collection = db.get('users');
+
+  var username = req.body.username;
+  var password = req.body.password;
+
+  var pass = md5(password);
+
+  var db = req.db;
+
+  var collection = db.get('users');
+
+  console.log("Checking password...");
+
+  collection.findOne({ username: username }).on('success', function (doc) {
+    console.log(pass);
+    console.log(doc.password);
+    if (pass === doc.password) {
+      console.log("Success!");
+      auth = true;
+      // go to new-post
+    }else {
+      // go to homepage
+    }
   });
 });
 

@@ -101,28 +101,63 @@ h2 {
   color: rgba(0,0,0,0.8);
 }
 
+.body p {
+  color: rgba(0,0,0,0.75);
+}
+
+/* Navbar */
+nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: auto;
+  background: #fff;
+  padding: 10px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.right {
+  float: right;
+}
+
 
 /* Homepage styles */
 
 .hero {
   padding: 100px 0;
-  background: url(https://static.pexels.com/photos/7614/pexels-photo.jpg) no-repeat center center;
+  /*background: url(https://static.pexels.com/photos/7614/pexels-photo.jpg) no-repeat center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover;
+  background-size: cover;*/
+}
+.hero h1 {
+  letter-spacing: -0.02em;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 45px;
+  line-height: 1.2;
 }
 
 .article {
   border-bottom: 1px solid rgba(0,0,0,0.1);
+  padding: 10px 0;
 }
 section.posts-list {
 
 }
-section.posts-list article h2 > * {
+section.posts-list .article h2 > * {
   margin: 0;
   font-family: Helvetica;
   color: rgba(0,0,0,0.8);
+}
+section.posts-list .article h6 {
+  font-family: Helvetica;
+  color: rgba(0,0,0,0.3);
+  font-weight: 200;
+  margin: 0;
+  letter-spacing: 1px;
 }
 
 /* New post styles */
@@ -133,6 +168,41 @@ section.posts-list article h2 > * {
 
 button.medium-editor-action {
   border-radius: 0;
+}
+
+/*popover login*/
+.popover {
+  overflow: hidden;
+  position: absolute;
+  z-index: 900;
+  visibility: visible;
+  font-size: 12px;
+  text-align: center;
+  padding: 15px;
+  visibility: hidden;
+  pointer-events: auto;
+  box-shadow:0 1px 1px rgba(0,0,0,0.25),0 0 1px rgba(0,0,0,0.35);
+  background: #FFF;
+  border-radius: 4px;
+  max-width: 280px;
+  right: 10px;
+  top: 70px;
+}.popover.visible {
+  visibility: visible;
+}
+
+input {
+  width: 100%;
+  padding: 11px 12px;
+  font-size: 13px;
+  background: #fff;
+  border: 1px solid #edeff1;
+  color: #5f6979;
+  border-radius: 3px;
+  box-sizing: border-box;
+  -webkit-transition: all 0.1s ease-in;
+  transition: all 0.1s ease-in;
+  -webkit-appearance: none;
 }
 
 /*Medium editor styles*/

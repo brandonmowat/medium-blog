@@ -7,3 +7,9 @@ function setContents() {
   var content = tag.innerHTML;
   document.getElementById("body_input").setAttribute("value", content);
 }
+
+$(document).ready(function() {
+  $("#toggleVisibility").click( function() {
+    $(".popover").toggleClass("visible");
+  });
+});

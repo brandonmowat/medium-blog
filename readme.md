@@ -1,4 +1,4 @@
-#FUCK OFF IT'S NOT DONE!
+FUCK OFF IT'S NOT DONE!
 Well... it's almost done now.
 
 
@@ -8,4 +8,4 @@ features:
 
 todo:
 - insert photos
-- 
+-

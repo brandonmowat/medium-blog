@@ -18,7 +18,7 @@ function getContent(id) {
 }
 
 // if is authenticated, continue
-function isAuthenticated(req, res, next, username, password) {
+function isAuthenticated(req, res, next) {
 
   var auth = false;
 
@@ -84,29 +84,29 @@ router.get('/post', function (req, res) {
   res.redirect("/");
 });
 
-router.get("/new-post", function (req, res, next) {
-  console.log("Require auth here.");
+// router.get("/new-post", function (req, res, next) {
+//   console.log("Require auth here.");
+//
+//   var pass = md5("Floppy11");
+//
+//   var db = req.db;
+//
+//   var collection = db.get('users');
+//
+//   collection.findOne({ username: "Brandon" }).on('success', function (doc) {
+//     console.log(pass);
+//     console.log(doc.password);
+//     if (pass === doc.password) {
+//       next();
+//     }else {
+//       res.redirect("/");
+//     }
+//   });
+// });
 
-  var pass = md5("Floppy11");
-
-  var db = req.db;
-
-  var collection = db.get('users');
-
-  collection.findOne({ username: "Brandon" }).on('success', function (doc) {
-    console.log(pass);
-    console.log(doc.password);
-    if (pass === doc.password) {
-      next();
-    }else {
-      res.redirect("/");
-    }
-  });
-});
-
-router.get("/new-post", isAuthenticated(), function (req, res) {
-  res.render("new-post");
-});
+// router.get("/new-post", isAuthenticated, function (req, res) {
+//   res.render("new-post");
+// });
 
 // Here's wher we will submit new-post info to the database
 router.post('/new-post', function(req, res) {
@@ -202,15 +202,26 @@ router.post("/", function(req, res) {
 
   console.log("Checking password...");
 
-  collection.findOne({ username: username }).on('success', function (doc) {
-    console.log(pass);
-    console.log(doc.password);
-    if (pass === doc.password) {
-      console.log("Success!");
-      auth = true;
-      // go to new-post
-    }else {
-      // go to homepage
+  collection.find({ username: username }, function (err, doc) {
+    if (err) {
+      res.redirect('/');
+    }
+    console.log(doc);
+    if (!(doc.length === 0)) {
+      console.log(pass);
+      console.log(doc[0].password);
+      if (pass === doc[0].password) {
+        console.log("Success!");
+        auth = true;
+        // go to new-post
+        res.render("new-post");
+      }else {
+        // go to homepage
+        res.redirect('/');
+      }
+    }
+    else {
+      res.redirect('/');
     }
   });
 });

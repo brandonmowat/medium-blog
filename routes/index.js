@@ -173,6 +173,7 @@ router.get("/", function(req, res) {
   // find all the posts
   collection.find({}, function (err, docs){
     posts = "";
+    // TODO: Sort docs to post in reverse chronological order
     for (var i = 0; i < docs.length; i++) {
       posts += "<div class='article'>";
       posts += "<a href='/post/" + docs[i]._id + "'>";

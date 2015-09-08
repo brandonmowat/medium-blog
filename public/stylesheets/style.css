@@ -20,6 +20,7 @@ a {
 
 .container {
   max-width: 700px;
+  padding: 0 10px;
   margin: 0 auto;
 }
 .container img {
@@ -57,7 +58,7 @@ p {
   font-style: normal;
 }
 
-button {
+button, a.btn {
   color: #468c54;
   display: inline-block;
   position: relative;
@@ -79,6 +80,7 @@ button {
   user-select: none;
   box-sizing: border-box;
   border-radius: 999em;
+  border-radius: 5px;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
   letter-spacing: -0.02em;
@@ -89,7 +91,8 @@ button {
 
 /* Aritcle styles */
 
-h2 {
+h2, .title, .title p {
+  font-family: "Helvetica neue", "helvetica", sans-serif;
   letter-spacing: -0.02em;
   font-weight: 700;
   font-style: normal;
@@ -99,6 +102,16 @@ h2 {
   margin-top: 40px;
   margin-bottom: 4px;
   color: rgba(0,0,0,0.8);
+}
+
+.editable, .editable p {
+  font-size: 22px;
+  line-height: 1.5;
+  margin-bottom: 30px;
+  font-family: "freight-text-pro",Georgia,Cambria,"Times New Roman",Times,serif;
+  letter-spacing: .01rem;
+  font-weight: 400;
+  font-style: normal;
 }
 
 .body p {
@@ -117,27 +130,42 @@ nav {
   border-bottom: 1px solid #f0f0f0;
 }
 
+nav .logo {
+  font-size: 24px;
+  font-family: "proxima-nova", helvetica;
+  font-weight: 100;
+  letter-spacing: -0.01em;
+}
+
 .right {
   float: right;
+}
+.left {
+  float: left;
 }
 
 
 /* Homepage styles */
 
 .hero {
-  padding: 100px 0;
+  margin-top: 59px;
+  padding: 60px 0px 60px 0px;
   /*background: url(https://static.pexels.com/photos/7614/pexels-photo.jpg) no-repeat center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;*/
+  text-align: center;
+
 }
 .hero h1 {
   letter-spacing: -0.02em;
-  font-weight: 700;
+  font-weight: 100;
   font-style: normal;
   font-size: 45px;
   line-height: 1.2;
+  text-transform: uppercase;
+  font-family: "brandon-grotesque", helvetica;
 }
 
 .article {

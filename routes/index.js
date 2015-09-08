@@ -184,7 +184,7 @@ router.get("/", function(req, res) {
   // find all the posts
   collection.find({}, function (err, docs){
     posts = "";
-    // TODO: Sort docs to post in reverse chronological order
+    // TODO: Sort docs to post in reverse chronological order (better)
     docs.reverse(); // Hacky, but it works for now
     for (var i = 0; i < docs.length; i++) {
       posts += "<div class='article'>";
@@ -194,7 +194,7 @@ router.get("/", function(req, res) {
       posts += "</a>"
       posts += "</div>";
     }
-    res.render('index', { title: 'Brandon\'s Blog', body : posts });
+    res.render('index', { title: 'The Blawg', body : posts });
   });
 });
 
@@ -226,7 +226,7 @@ router.post("/", function(req, res) {
       if (pass === doc[0].password) {
         console.log("Success!");
         auth = true;
-        // go to new-post
+        // render new-post page
         res.render("new-post");
       }else {
         // go to homepage

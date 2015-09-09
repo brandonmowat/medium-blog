@@ -19,7 +19,9 @@ $ mongod --dbpath ~/Path/to/blog/data/
 ```
 $ mongo
 ```
-- ```db.users.insert({ "username":"(a string of the username you want)", "password":"(*an md5 hash of the password you want*)"})```
+```
+db.users.insert({ "username":"(a string of the username you want)", "password":"(*an md5 hash of the password you want*)"})
+```
 
 ####You're good to go! Go to `localhost:3000` and start blogging!
 

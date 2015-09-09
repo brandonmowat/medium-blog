@@ -2,7 +2,7 @@
 Well... it's almost done now.
 
 #to set up on your local machine:
-*before set-up, you must have _node_ and _mongodb_ installed*
+###*before set-up, you must have `node` and `mongodb` installed*
 - clone the repo
 - install npm dependencies from the root of the project
 ```

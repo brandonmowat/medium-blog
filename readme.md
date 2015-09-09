@@ -19,14 +19,14 @@ You'll have to create an account for yourself in the database:
 ```
 $ mongo
 ```
-- ```db.users.insert({ "username":"(a string of the username you want)", "password":"(an md5 hash of the password you want)"})```
+- ```db.users.insert({ "username":"(*a string of the username you want*)", "password":"(*an md5 hash of the password you want*)"})```
 
 
-features:
+#features:
 - user auth for posting new articles
 - inline editor (medium-like)
 
-todo:
+#todo:
 - insert photos
 - make it prettier
 - display in reverse chronological

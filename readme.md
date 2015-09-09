@@ -2,12 +2,12 @@
 Well... it's almost done now.
 
 #to set up on your local machine:
+###*before set-up, you must have node and mongodb installed*
 - clone the repo
-- run
+- install npm dependencies from the root of the project
 ```
 $ npm install
 ```
-on the root
 - make a "data" folder in the root
 - run an instance of mongodb in another tab
 ```
@@ -19,7 +19,7 @@ You'll have to create an account for yourself in the database:
 ```
 $ mongo
 ```
-- ```db.users.insert({ "username":"(*a string of the username you want*)", "password":"(*an md5 hash of the password you want*)"})```
+- ```db.users.insert({ "username":"(a string of the username you want)", "password":"(*an md5 hash of the password you want*)"})```
 
 
 #features:

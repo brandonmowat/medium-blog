@@ -3,9 +3,16 @@ Well... it's almost done now.
 
 #to set up on your local machine:
 - clone the repo
-- run "npm install" on the root
+- run
+'''
+$ npm install
+'''
+on the root
 - make a "data" folder in the root
-- run an instance of mongodb in another tab "mongod --dbpath ~/Development/express-test/blog/data/"
+- run an instance of mongodb in another tab
+'''
+mongod --dbpath ~/Development/express-test/blog/data/
+'''
 
 You'll have to create an account for yourself in the database:
 - start the mongo shell in another tab "mongo"

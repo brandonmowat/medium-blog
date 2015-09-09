@@ -3,19 +3,19 @@ Well... it's almost done now.
 
 #to set up on your local machine:
 ###*before set-up, you must have `node` and `mongodb` installed*
-1. clone the repo
-2. install npm dependencies from the root of the project
+- clone the repo
+- install npm dependencies from the root of the project
 ```
 $ npm install
 ```
-3. make a "data" folder in the root of the project
-4. run an instance of mongodb in another tab
+- make a "data" folder in the root of the project
+- run an instance of mongodb in another tab
 ```
 $ mongod --dbpath ~/Path/to/blog/data/
 ```
 
 #####*You'll have to create an account for yourself in the database:*
-5. start the mongo shell in another tab
+- start the mongo shell in another tab
 ```
 $ mongo
 ```

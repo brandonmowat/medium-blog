@@ -35,9 +35,8 @@ npm start
 #features:
 - user auth for posting new articles
 - inline editor (medium-like)
+- display in reverse chronological <- hacky, but works
 
 #todo:
 - insert photos
-- make it prettier
-- display in reverse chronological
 - editing

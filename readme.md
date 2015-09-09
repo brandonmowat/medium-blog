@@ -3,24 +3,27 @@ Well... it's almost done now.
 
 #to set up on your local machine:
 ###*before set-up, you must have `node` and `mongodb` installed*
-- clone the repo
-- install npm dependencies from the root of the project
+1. clone the repo
+2. install npm dependencies from the root of the project
 ```
 $ npm install
 ```
-- make a "data" folder in the root of the project
-- run an instance of mongodb in another tab
+3. make a "data" folder in the root of the project
+4. run an instance of mongodb in another tab
 ```
 $ mongod --dbpath ~/Path/to/blog/data/
 ```
 
 #####*You'll have to create an account for yourself in the database:*
-- start the mongo shell in another tab
+5. start the mongo shell in another tab
 ```
 $ mongo
 ```
 ```
-db.users.insert({ "username":"(a string of the username you want)", "password":"(*an md5 hash of the password you want*)"})
+> use blog
+```
+```
+> db.users.insert({ "username":"(a string of the username you want)", "password":"(*an md5 hash of the password you want*)"})
 ```
 
 ####You're good to go! Go to `localhost:3000` and start blogging!

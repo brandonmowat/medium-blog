@@ -12,18 +12,9 @@ function getDate() {
     return date;
 }
 
-function compare(a, b) {
-  if (a.date < b.date) {
-    return -1;
-  }
-  if (a.date > b.date) {
-    return 1;
-  }
-  // a must be equal to b
-  return 0;
-}
-
+//
 // Get the content of the element with ID, "id"
+//
 function getContent(id) {
   return document.getElementById(id).innerHTML;
 }
@@ -189,8 +180,8 @@ router.get("/", function(req, res) {
     for (var i = 0; i < docs.length; i++) {
       posts += "<div class='article'>";
       posts += "<a href='/post/" + docs[i]._id + "'>";
-      posts += ("<h2>" + docs[i].content.title + "</h2>");
       posts += ("<h6>" + docs[i].date + "</h6>");
+      posts += ("<h2>" + docs[i].content.title + "</h2>");
       posts += "</a>"
       posts += "</div>";
     }

@@ -9,7 +9,8 @@ function setContents() {
 }
 
 $(document).ready(function() {
-  $("#toggleVisibility").click( function() {
-    $(".popover").toggleClass("visible");
+  $(".toggleVisibility").click( function() {
+    $(".lightbox").toggleClass("visible");
+    $(".animated").toggleClass("bounceIn");
   });
 });

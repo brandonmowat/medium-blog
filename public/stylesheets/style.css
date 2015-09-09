@@ -187,7 +187,8 @@ section.posts-list .article h2 > * {
   color: rgba(0,0,0,0.8);
 }
 
-section.posts-list .article h2, section.posts-list .article p {margin-top: 0px;}
+section.posts-list .article h2,
+section.posts-list .article p {margin-top: 0px;}
 
 section.posts-list .article h6 {
   font-family: Helvetica;

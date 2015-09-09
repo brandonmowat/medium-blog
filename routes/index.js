@@ -177,14 +177,16 @@ router.get("/", function(req, res) {
     posts = "";
     // TODO: Sort docs to post in reverse chronological order (better)
     docs.reverse(); // Hacky, but it works for now
+
+    // in this loop, we create the html content to create the article links
     for (var i = 0; i < docs.length; i++) {
       posts += "<div class='article'>";
       posts += "<a href='/post/" + docs[i]._id + "'>";
       posts += ("<h6>" + docs[i].date + "</h6>");
       posts += ("<h2>" + docs[i].content.title + "</h2>");
 
-      // TODO: get the first paragraph and display it
-
+      // Here, we grab the text content of the first paragraph tag so we can
+      // display it in the article preview
       var body = "";
       var inP = false;
       for (var j = 0; j < docs[i].content.content.length; j++) {
@@ -203,6 +205,7 @@ router.get("/", function(req, res) {
           }
         }
       }
+
       posts += "<p>" + body + "</p>"
       posts += "</a>"
       posts += "</div>";
@@ -213,6 +216,7 @@ router.get("/", function(req, res) {
 
 
 router.post("/", function(req, res) {
+  // Check if the user exists
   var db = req.db;
 
   var collection = db.get('users');
@@ -228,6 +232,7 @@ router.post("/", function(req, res) {
 
   console.log("Checking password...");
 
+  // Find user to see if they actually exist
   collection.find({ username: username }, function (err, doc) {
     if (err) {
       res.redirect('/');

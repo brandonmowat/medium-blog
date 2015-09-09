@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'freight';
+  font-style: normal;
+  font-weight: 100;
+  src: local('webfont'), url('/fonts/freight-pro.woff') format('woff');
+}
+
 html, body {
   margin: 0;
 }
@@ -52,9 +59,9 @@ p {
   font-size: 22px;
   line-height: 1.5;
   margin-bottom: 30px;
-  font-family: "freight-text-pro",Georgia,Cambria,"Times New Roman",Times,serif;
+  font-family: "freight";
   letter-spacing: .01rem;
-  font-weight: 400;
+  font-weight: 100;
   font-style: normal;
 }
 
@@ -91,7 +98,7 @@ button, a.btn {
 
 /* Aritcle styles */
 
-h2, .title, .title p {
+.content h2, .title, .title p {
   font-family: "Helvetica neue", "helvetica", sans-serif;
   letter-spacing: -0.02em;
   font-weight: 700;
@@ -108,7 +115,7 @@ h2, .title, .title p {
   font-size: 22px;
   line-height: 1.5;
   margin-bottom: 30px;
-  font-family: "freight-text-pro",Georgia,Cambria,"Times New Roman",Times,serif;
+  font-family: "freight",Georgia,Cambria,"Times New Roman",Times,serif;
   letter-spacing: .01rem;
   font-weight: 400;
   font-style: normal;
@@ -150,12 +157,7 @@ nav .logo {
 .hero {
   margin-top: 59px;
   padding: 60px 0px 60px 0px;
-  /*background: -webkit-linear-gradient(rgba(194, 228, 237, 0.2), rgb(255, 255, 255));
-  background: -o-linear-gradient(rgba(194, 228, 237, 0.2), rgb(255, 255, 255));
-  background: -moz-linear-gradient(rgba(194, 228, 237, 0.2), rgb(255, 255, 255));
-  background: linear-gradient(rgba(194, 228, 237, 0.2), rgb(255, 255, 255));*/
   text-align: center;
-
 }
 .hero h1 {
   letter-spacing: -0.02em;
@@ -172,17 +174,16 @@ nav .logo {
   border-bottom: 1px solid rgba(0,0,0,0.1);
   padding: 10px 0;
 }
-section.posts-list {
 
-}
-section.posts-list .article h2 > * {
-  font-family: "Helvetica neue", "helvetica", sans-serif;
-  letter-spacing: -0.02em;
+section.posts-list .article h2 > *,
+section.posts-list .article h2 {
+  font-family: Helvetica;
   font-weight: 700;
-  font-style: normal;
-  font-size: 36px;
-  margin-left: -1.8px;
-  line-height: 1.2;
+  font-size: 28px;
+  margin-left: -1.4px;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin-top: 16px;
   margin-bottom: 4px;
   color: rgba(0,0,0,0.8);
 }
@@ -196,6 +197,15 @@ section.posts-list .article h6 {
   font-weight: 700;
   margin: 0;
   font-size: 36px;
+}
+section.posts-list .article p {
+  overflow : hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  color: rgba(0,0,0,0.75);
+  font-size: 18px;
 }
 
 /* New post styles */

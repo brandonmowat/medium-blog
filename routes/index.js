@@ -182,6 +182,28 @@ router.get("/", function(req, res) {
       posts += "<a href='/post/" + docs[i]._id + "'>";
       posts += ("<h6>" + docs[i].date + "</h6>");
       posts += ("<h2>" + docs[i].content.title + "</h2>");
+
+      // TODO: get the first paragraph and display it
+
+      var body = "";
+      var inP = false;
+      for (var j = 0; j < docs[i].content.content.length; j++) {
+        console.log('body');
+        if (docs[i].content.content[j+1] === "<") {
+          if (docs[i].content.content[j+2] === "/") {
+            break;
+          }
+        }
+        if (inP) {
+          body += docs[i].content.content[j+1];
+        }
+        if (docs[i].content.content[j] === "p") {
+          if (docs[i].content.content[j+1] === ">") {
+            inP = true;
+          }
+        }
+      }
+      posts += "<p>" + body + "</p>"
       posts += "</a>"
       posts += "</div>";
     }

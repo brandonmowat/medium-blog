@@ -66,6 +66,7 @@ p {
 }
 
 button, a.btn {
+  line-height: 35px;
   color: #468c54;
   display: inline-block;
   position: relative;
@@ -104,6 +105,18 @@ button, a.btn {
   font-weight: 700;
   font-style: normal;
   font-size: 36px;
+  margin-left: -1.8px;
+  line-height: 1.2;
+  margin-top: 40px;
+  margin-bottom: 4px;
+  color: rgba(0,0,0,0.8);
+}
+.content h1, .content .title h1 {
+  font-family: "Helvetica neue", "helvetica", sans-serif;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 54px;
   margin-left: -1.8px;
   line-height: 1.2;
   margin-top: 40px;
@@ -175,18 +188,6 @@ nav .logo {
   padding: 10px 0;
 }
 
-section.posts-list .article h2 > *,
-section.posts-list .article h2 {
-  font-family: Helvetica;
-  font-weight: 700;
-  font-size: 28px;
-  margin-left: -1.4px;
-  letter-spacing: -0.02em;
-  line-height: 1.15;
-  margin-top: 16px;
-  margin-bottom: 4px;
-  color: rgba(0,0,0,0.8);
-}
 
 section.posts-list .article h2,
 section.posts-list .article p {margin-top: 0px;}
@@ -206,6 +207,20 @@ section.posts-list .article p {
   -webkit-box-orient: vertical;
   color: rgba(0,0,0,0.75);
   font-size: 18px;
+}
+section.posts-list .article h2 > *,
+section.posts-list .article h2,
+section.posts-list .article h1 {
+  font-family: Helvetica;
+  font-weight: 700;
+  font-size: 28px;
+  margin-left: -1.4px;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin-top: 16px;
+  margin-bottom: 4px;
+  color: rgba(0,0,0,0.8);
+  text-align: left !important;
 }
 
 /* New post styles */

@@ -5,7 +5,7 @@
 <nav>
   <div class="container">
     <div class="left">
-      <a class="btn" href="/">Home</a>
+      <a class="btn" href="/">&lt; Home</a>
 
     </div>
 
@@ -31,11 +31,53 @@
 
 
 <script src="//cdn.jsdelivr.net/medium-editor/latest/js/medium-editor.min.js"></script>
-<script>var body_editor = new MediumEditor('.editable');</script>
 <script>var title_editor = new MediumEditor('.title_editor', {
   placeholder: {
       /* This example includes the default options for placeholder,
         if nothing is passed this is what it used */
         text: 'Title'
+      },
+
+        toolbar: {
+            buttons: ['h1', 'h2', 'h3', 'justifyLeft', 'justifyCenter', 'quote']
+        },
+});</script>
+<script>var body_editor = new MediumEditor('.editable', {
+  delay: 1000,
+    targetBlank: true,
+    toolbar: {
+        buttons: ['h1', 'h2', 'h3', 'justifyLeft', 'justifyCenter', 'quote']
+    },
+    placeholder: {
+        /* This example includes the default options for placeholder,
+          if nothing is passed this is what it used */
+          text: 'Write your story here...'
+        },
+    keyboardCommands: {
+        /* This example includes the default options for keyboardCommands,
+           if nothing is passed this is what it used */
+        commands: [
+            {
+                command: 'bold',
+                key: 'B',
+                meta: true,
+                shift: false,
+                alt: false
+            },
+            {
+                command: 'italic',
+                key: 'I',
+                meta: true,
+                shift: false,
+                alt: false
+            },
+            {
+                command: 'underline',
+                key: 'U',
+                meta: true,
+                shift: false,
+                alt: false
+            }
+        ],
     }
 });</script>

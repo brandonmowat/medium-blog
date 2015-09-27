@@ -3,13 +3,15 @@ var router = express.Router();
 
 var md5 = require('hash-anything').md5;
 
+
+
 var postID;
 var auth = false;
 
 function getDate() {
-    var d = new Date();
-    var date = d.toLocaleDateString();
-    return date;
+  var d = new Date();
+  var date = d.toLocaleDateString();
+  return date;
 }
 
 //
@@ -17,22 +19,6 @@ function getDate() {
 //
 function getContent(id) {
   return document.getElementById(id).innerHTML;
-}
-
-// if is authenticated, continue
-function isAuthenticated(req, res, next) {
-
-  var auth = false;
-
-  // do any checks you want to in here
-
-  // CHECK THE USER STORED IN SESSION FOR A CUSTOM VARIABLE
-  // you can do this however you want with whatever variables you set up
-
-  if (!(auth))
-    return next();
-  // IF A USER ISN'T LOGGED IN, THEN REDIRECT THEM SOMEWHERE
-  res.redirect('/');
 }
 
 function auth(req, username, password) {
@@ -43,46 +29,52 @@ function auth(req, username, password) {
 
   var collection = db.get('users');
 
-  collection.findOne({ username: name }).on('success', function (doc) {
+  collection.findOne({
+    username: name
+  }).on('success', function(doc) {
     console.log(pass);
     console.log(doc.password);
     if (pass === doc.password) {
       console.log(doc);
       return true
-    }
-    else {
+    } else {
       return false
     }
   });
 }
 
 /* GET post page. */
-router.param('id', function (req, res, next, id) {
+router.param('id', function(req, res, next, id) {
   console.log('The parameter "ID" is: ' + id);
   postID = id;
   next();
 })
 
-router.get('/post/:id', function (req, res, next) {
+router.get('/post/:id', function(req, res, next) {
   console.log('Trying to find post id: ' + postID);
   next();
 });
 
 // Get the post wit id "id"
-router.get('/post/:id', function (req, res) {
+router.get('/post/:id', function(req, res) {
   var db = req.db;
 
   var collection = db.get('blogPosts');
 
   // try to find the post with ID "postID".
   // Find's by the default id given by mongo
-  collection.findOne({ _id: postID }).on('success', function (doc) {
-    res.render('post', { title: doc.content.title, body: doc.content.content });
+  collection.findOne({
+    _id: postID
+  }).on('success', function(doc) {
+    res.render('post', {
+      title: doc.content.title,
+      body: doc.content.content
+    });
   });
 
 });
 
-router.get('/post', function (req, res) {
+router.get('/post', function(req, res) {
   res.redirect("/");
 });
 
@@ -114,13 +106,12 @@ router.get('/post', function (req, res) {
 router.post('/new-post', function(req, res) {
 
 
-
   var contentTitle = req.body.title;
   var contentBody = req.body.body;
 
   var postTitle = "";
   var fluffyTitle = ((contentTitle.split(">"))[1]).split(" ");
-  for (var i = 0; i < ((fluffyTitle.length)-1); i++) {
+  for (var i = 0; i < ((fluffyTitle.length) - 1); i++) {
     postTitle += (fluffyTitle[i]).toLowerCase();
     postTitle += "-";
   }
@@ -133,24 +124,23 @@ router.post('/new-post', function(req, res) {
   var contentBody = req.body.body;
 
   collection.insert({
-      "date" : getDate(),
-      "blogTitle" : postTitle,
-      "content" : {
-        "title" : contentTitle,
-        "content" : contentBody
-      }
+    "date": getDate(),
+    "blogTitle": postTitle,
+    "content": {
+      "title": contentTitle,
+      "content": contentBody
+    }
 
-  }, function (err, doc) {
-      if (err) {
-          // If it failed, return error
-          res.send("There was a problem adding the information to the database.");
-      }
-      else {
-          // If it worked, set the header so the address bar doesn't still say /adduser
-          //res.location("userlist");
-          // And forward to success page
-          res.redirect("/");
-      }
+  }, function(err, doc) {
+    if (err) {
+      // If it failed, return error
+      res.send("There was a problem adding the information to the database.");
+    } else {
+      // If it worked, set the header so the address bar doesn't still say /adduser
+      //res.location("userlist");
+      // And forward to success page
+      res.redirect("/");
+    }
   });
 });
 /*
@@ -168,12 +158,18 @@ var results = collection.find({title:id}, function (err, docs){
 router.get("/", function(req, res) {
   // Want to get all the blog posts, sort them, create some html and then
   // push it to our template
+
+  var auth = req.session.auth || false;
+  if (auth) {
+    res.render('new-post');
+  }
+
   var db = req.db;
 
   var collection = db.get('blogPosts');
 
   // find all the posts
-  collection.find({}, function (err, docs){
+  collection.find({}, function(err, docs) {
     posts = "";
     // TODO: Sort docs to post in reverse chronological order (better)
     docs.reverse(); // Hacky, but it works for now
@@ -190,17 +186,16 @@ router.get("/", function(req, res) {
       var body = "";
       var inP = false;
       for (var j = 0; j < docs[i].content.content.length; j++) {
-        console.log('body');
-        if (docs[i].content.content[j+1] === "<") {
-          if (docs[i].content.content[j+2] === "/") {
+        if (docs[i].content.content[j + 1] === "<") {
+          if (docs[i].content.content[j + 2] === "/") {
             break;
           }
         }
         if (inP) {
-          body += docs[i].content.content[j+1];
+          body += docs[i].content.content[j + 1];
         }
         if (docs[i].content.content[j] === "p") {
-          if (docs[i].content.content[j+1] === ">") {
+          if (docs[i].content.content[j + 1] === ">") {
             inP = true;
           }
         }
@@ -210,7 +205,10 @@ router.get("/", function(req, res) {
       posts += "</a>"
       posts += "</div>";
     }
-    res.render('index', { title: 'The Blawg', body : posts });
+    res.render('index', {
+      title: 'The Blawg',
+      body: posts
+    });
   });
 });
 
@@ -233,7 +231,9 @@ router.post("/", function(req, res) {
   console.log("Checking password...");
 
   // Find user to see if they actually exist
-  collection.find({ username: username }, function (err, doc) {
+  collection.find({
+    username: username
+  }, function(err, doc) {
     if (err) {
       res.redirect('/');
     }
@@ -245,13 +245,13 @@ router.post("/", function(req, res) {
         console.log("Success!");
         auth = true;
         // render new-post page
+        req.session.auth = true; // login
         res.render("new-post");
-      }else {
+      } else {
         // go to homepage
         res.redirect('/');
       }
-    }
-    else {
+    } else {
       res.redirect('/');
     }
   });

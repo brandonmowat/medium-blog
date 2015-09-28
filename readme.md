@@ -1,5 +1,13 @@
-#FUCK OFF IT'S NOT DONE!
-Well... it's almost done now.
+#What
+Medium Blog is an Open Source blogging system that functions in a similar way
+to [medium.com(http://medium.com)]. It has an awesome editor and an authentication
+system, so blogging is fun and easy.
+
+#features
+- user auth for posting new articles
+- inline editor (medium-like)
+- User sessions (keeps you logged in)
+
 
 #to set up on your local machine:
 ###*before set-up, you must have `node` and `mongodb` installed*
@@ -31,12 +39,8 @@ npm start
 ```
 ####You're good to go! Go to `localhost:3000` and start blogging!
 
-
-#features:
-- user auth for posting new articles
-- inline editor (medium-like)
-- display in reverse chronological <- hacky, but works
-
 #todo:
 - insert photos
 - editing
+- reverse chronological order
+- Global navigation bar
